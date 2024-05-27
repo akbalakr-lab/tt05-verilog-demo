@@ -11,13 +11,37 @@ module tt_um_lif (
     input  wire       rst_n     // reset_n - low to reset
 );
     // use bidirectionals as outputs
-    assign uio_oe = 8'b11111111;
-    assign uio_out[6:0] = 7'd0;
-    lif lif1(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(uio_out[7]), .state(uio_out));
+    //assign uio_oe = 8'b11111111;
+    //assign uio_out[6:0] = 7'd0;
+    //lif lif1(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(uio_out[7]), .state(uio_out));
 
 
 
 
     // lif lif2(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(uio_out[7]), .state(uio_out));
+
+        // use bidirectionals as outputs
+    assign uio_oe = 8'b11111111;
+
+    // Default value for the 7 lower bits of uio_out
+    assign uio_out[6:0] = 7'd0;
+
+    wire spike;
+    wire [7:0] state;
+
+    // Driving uo_out with state (example usage, modify as needed)
+    assign uo_out = state;
+
+    // Instantiate lif module
+    lif lif1(
+        .current(ui_in),
+        .clk(clk),
+        .rst_n(rst_n),
+        .spike(spike),
+        .state(state)
+    );
+
+    // Assign spike to the highest bit of uio_out
+    assign uio_out[7] = spike;
 
 endmodule
