@@ -15,4 +15,9 @@ module tt_um_lif (
     assign uio_out[6:0] = 7'd0;
     lif lif1(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(uio_out[7]), .state(uio_out));
 
+
+
+
+    // lif lif2(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(uio_out[7]), .state(uio_out));
+
 endmodule
