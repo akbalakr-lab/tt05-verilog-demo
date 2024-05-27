@@ -20,7 +20,7 @@ module lif (
     input wire [7:0]    current,
     input wire          clk,
     input wire          rst_n, 
-    output wire         spike
+    output wire         spike,
     output reg [7:0]    state
 );
     reg [7:0] threshold;
@@ -31,7 +31,7 @@ module lif (
             state <= 0;
             threshold <= 127;
         end else begin
-            state <= next_state
+            state <= next_state;
         end
     end
 
