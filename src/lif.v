@@ -33,6 +33,7 @@ module lif (
         end else begin
             state <= next_state
         end
+    end
 
     // next_state logic
 
@@ -41,7 +42,5 @@ module lif (
 
     // spiking logic
     assign spike = (state >= threshold);
-
-    end
 endmodule
         
