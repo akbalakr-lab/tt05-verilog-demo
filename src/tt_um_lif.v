@@ -13,6 +13,6 @@ module tt_um_lif (
     // use bidirectionals as outputs
     assign uio_oe = 8'b11111111;
 
-    lif lif1(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(uio_out[7]), .state(uio_out))
+    lif lif1(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(uio_out[7]), .state(uio_out));
 
 endmodule
