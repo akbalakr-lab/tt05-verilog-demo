@@ -31,17 +31,17 @@ module tt_um_lif (
         .state(state1)
     );
 
-    // Instantiate the second LIF neuron
-    lif lif2(
-        .current(uio_in),
-        .clk(clk),
-        .rst_n(rst_n),
-        .spike(spike2),
-        .state(state2)
-    );
+    // // Instantiate the second LIF neuron
+    // lif lif2(
+    //     .current(uio_in),
+    //     .clk(clk),
+    //     .rst_n(rst_n),
+    //     .spike(spike2),
+    //     .state(state2)
+    // );
 
     // Assign spikes to the highest bits of uio_out
     assign uio_out[7] = spike1;
-    assign uio_out[6] = spike2;
+    // assign uio_out[6] = spike2;
 
 endmodule
