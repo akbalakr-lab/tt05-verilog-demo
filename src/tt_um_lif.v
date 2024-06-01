@@ -28,7 +28,7 @@ module tt_um_lif (
 
     wire spike;
     wire [7:0] state;
-
+    wire [7:0] state_out;
     // Driving uo_out with state (example usage, modify as needed)
     assign uo_out = state;
 
@@ -38,6 +38,14 @@ module tt_um_lif (
         .clk(clk),
         .rst_n(rst_n),
         .spike(spike),
+        .state(state_out)
+    );
+
+    lif lif2(
+        .current({uio_out[7], 7'b0000001}),
+        .clk(clk),
+        .rst_n(rst_n),
+        .spike(uio_out[6]),
         .state(state)
     );
 
