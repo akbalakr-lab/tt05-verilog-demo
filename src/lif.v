@@ -38,7 +38,7 @@ module lif (
     // next_state logic
 
     // right shift by 1 position: divide by 2 --> beta = 0.5. doesnt count as a computation
-    assign next_state = current + (spike ? 0 : (state >> 1));
+    assign next_state = current + (spike ? 0 : (state >> 1)); // if spike is high, then the state is reset to 0
 
     // spiking logic
     assign spike = (state >= threshold);
