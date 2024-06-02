@@ -5,7 +5,7 @@ from cocotb.triggers import RisingEdge, FallingEdge, Timer, ClockCycles
 @cocotb.test()
 async def test_my_design(dut):
 
-    CONSTANT_CURRENT = 40
+    CONSTANT_CURRENT = 200
     dut._log.info("start")
 
     clock = Clock(dut.clk, 1, units="ns") # Create a 1ns period clock on port clk
@@ -21,7 +21,7 @@ async def test_my_design(dut):
     # await ClockCycles(dut.clk, 100)
     for _ in range(100):
         await RisingEdge(dut.clk)
-        dut._log.info(f"ui_in: {dut.ui_in.value}, ui_out: {dut.ui_out.value}"
+        # dut._log.info(f"ui_in: {dut.ui_in.value}, ui_out: {dut.ui_out.value}")
                       
     dut._log.info("Finished Test")
     

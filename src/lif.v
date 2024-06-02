@@ -29,7 +29,7 @@ module lif (
     always @(posedge clk) begin
         if (!rst_n) begin
             state <= 0;
-            threshold <= 127;
+            threshold <= 240;
         end else begin
             state <= next_state;
         end
@@ -38,8 +38,9 @@ module lif (
     // next_state logic
 
     // right shift by 1 position: divide by 2 --> beta = 0.5. doesnt count as a computation
-    assign next_state = current + (spike ? 0 : (state >> 1)); // if spike is high, then the state is reset to 0
-
+    // assign next_state = current + (spike ? 0 : (state >> 1)); // if spike is high, then the state is reset to 0
+    // next state with 0.75 decay rate 
+    assign next_state = current + (spike ? 0 : (state >> 1)) - (state >> 2);
     // spiking logic
     assign spike = (state >= threshold);
 endmodule

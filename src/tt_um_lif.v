@@ -34,7 +34,9 @@ module tt_um_lif (
     // Instantiate the second LIF neuron
     lif lif2(
         // .current(uio_in), I don't think you can use uio_oe and uio_oe since they use the same 8 wires 
-        .current(ui_in + spike1), // Connect the spike of the first neuron to the input of the second neuron
+        // .current(spike1), // Connect the spike of the first neuron to the input of the second neuron
+        // make current a 8 bit wire with the 7th bit as the spike of the first neuron
+        .current({spike1, uio_in[6:0]}),
         .clk(clk),
         .rst_n(rst_n),
         .spike(spike2),
